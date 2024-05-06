@@ -46,9 +46,9 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: statisPage(),
+        //home: statisPage(),
         //home: firstPage(),
-        //home: MyHomePage()
+        home: MyHomePage()
         //home: const foodPage(),
         //home:favPage(favoriteImagePaths: favoriteImagePaths)
       ),
