@@ -46,9 +46,9 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        //home: statisPage(),
-        //home: firstPage(),
-        home: MyHomePage()
+        //home: statisPage(), // for statistics
+        home: firstPage(), // for welcome
+        //home: MyHomePage() //login
         //home: const foodPage(),
         //home:favPage(favoriteImagePaths: favoriteImagePaths)
       ),
@@ -77,6 +77,10 @@ class WaveClipperTwo extends CustomClipper<Path> {
     return path;
   }
 
+  final TextEditingController _passwordController = TextEditingController();
+  bool _showPassword = false;
+  bool isScure = true;
+
   @override
   bool shouldReclip(WaveClipperTwo oldClipper) => false;
 }
@@ -100,6 +104,188 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    return Scaffold(
+        body: Container(
+            width: 360,
+            height: 800,
+            clipBehavior: Clip.antiAlias,
+            decoration: BoxDecoration(color: Colors.white),
+            child: Stack(children: [
+              Positioned(
+                left: -85,
+                top: -138,
+                child: Container(
+                  width: 530,
+                  height: 1155,
+                  decoration: BoxDecoration(color: Colors.white),
+                ),
+              ),
+              Positioned(
+                  left: -14,
+                  top: -235,
+                  child: Container(
+                      width: 402,
+                      height: 1111,
+                      child: Stack(children: [
+                        Positioned(
+                          left: 286,
+                          top: 303,
+                          child: Container(
+                            width: 88,
+                            height: 172,
+                            decoration: BoxDecoration(color: Color(0xFF156260)),
+                          ),
+                        ),
+                        Positioned(
+                          left: 14,
+                          top: 0,
+                          child: Container(
+                            width: 388,
+                            height: 388,
+                            decoration: ShapeDecoration(
+                              color: Color(0xFF156260),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(111),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          left: 0,
+                          top: 388,
+                          child: Container(
+                            width: 388,
+                            height: 723,
+                            decoration: ShapeDecoration(
+                              color: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(111),
+                              ),
+                            ),
+                          ),
+                        ),
+                        const Positioned(
+                          left: 99,
+                          top: 290,
+                          child: Text(
+                            'Invisible Chef',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 33,
+                              fontFamily: 'Tajawal',
+                              fontWeight: FontWeight.w500,
+                              height: 0,
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          left: 100,
+                          top: 200,
+                          child: Text(
+                            'تسجيل دخول',
+                            style: TextStyle(
+                              color: Color(0xFF156260),
+                              fontSize: 27,
+                              fontFamily: 'Tajawal',
+                              fontWeight: FontWeight.w600,
+                              height: 0,
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          left: 68,
+                          top: 523,
+                          child: SizedBox(
+                            width: 250,
+                            height: 50,
+                            child: TextField(
+                              decoration: InputDecoration(
+                                labelText: 'اسم المستخدم',
+                                hintText: "أدخل اسم المتسخدم",
+                                hintStyle: const TextStyle(fontSize: 14),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                                suffixIcon: const Icon(
+                                    Icons.person), // Add the icon here
+                              ),
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          left: 68,
+                          top: 600,
+                          child: SizedBox(
+                            width: 250,
+                            height: 50,
+                            child: TextField(
+                              controller: _passwordController,
+                              //obscureText:!_showPassword, // استخدام قيمة معكوسة لعرض/إخفاء كلمة المرور
+                              obscureText: !_showPassword,
+                              decoration: InputDecoration(
+                                labelText: 'كلمة المرور',
+                                hintText: "أدخل كلمة المرور",
+                                hintStyle: const TextStyle(fontSize: 14),
+
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                                // إضافة زر لتبديل رؤية كلمة المرور
+                                suffixIcon: IconButton(
+                                  icon: Icon(
+                                    _showPassword
+                                        ? Icons.visibility
+                                        : Icons.visibility_off,
+                                  ),
+                                  onPressed: () {
+                                    // تبديل قيمة المتغير لعرض/إخفاء كلمة المرور
+                                    setState(() {
+                                      _showPassword = !_showPassword;
+                                    });
+                                  },
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          left: 110,
+                          top: 695,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const statisPage()),
+                              );
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor:
+                                  const Color(0xFF156260), // لون الخلفية
+                              shape: RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.circular(10.0), // شكل الحواف
+                              ),
+                              elevation: 8, // ارتفاع الظل
+                            ),
+                            child: const Text(
+                              'تــسـجــيــل',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 24,
+                                fontFamily: 'Tajawal',
+                                fontWeight: FontWeight.w500,
+                                height: 0,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ] //children
+                          ) //stack
+                      ))
+            ])));
+  }
+  /* Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -163,15 +349,18 @@ class _MyHomePageState extends State<MyHomePage> {
         body: Stack(
       children: [
         Container(
+          width: double.infinity, // Cover entire width of the screen
+          height: double.infinity,
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('bg2.png'), // Replace with your asset path
+              image: AssetImage(
+                  'assets/images/bg2.png'), // Replace with your asset path
               fit: BoxFit.cover, // Adjust image fit as needed
             ),
           ),
         ),
         // Centered content
-        Center(
+        /*Center(
           child: SingleChildScrollView(
             child: Form(
               // Wrap the content with a Form
@@ -258,10 +447,10 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ),
-        ),
+        ),*/
       ],
     ));
-  }
+  }*/
 /*
   String replaceNumbers(value) {
     value = value.replaceAll(RegExp(r'٠'), '0');
