@@ -33,25 +33,25 @@ class MyApp extends StatelessWidget {
     return LocalizationProvider(
       state: LocalizationProvider.of(context).state,
       child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Flutter application',
-        localizationsDelegates: [
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          localizationDelegate
-        ],
-        supportedLocales: localizationDelegate.supportedLocales,
-        locale: localizationDelegate.currentLocale,
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
-        //home: statisPage(), // for statistics
-        home: firstPage(), // for welcome
-        //home: MyHomePage() //login
-        //home: const foodPage(),
-        //home:favPage(favoriteImagePaths: favoriteImagePaths)
-      ),
+          debugShowCheckedModeBanner: false,
+          title: 'Flutter application',
+          localizationsDelegates: [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            localizationDelegate
+          ],
+          supportedLocales: localizationDelegate.supportedLocales,
+          locale: localizationDelegate.currentLocale,
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+            useMaterial3: true,
+          ),
+          //home: statisPage(), // for statistics
+          //home: firstPage(), // for welcome
+          home: MyHomePage() //login
+          //home: const foodPage(),
+          //home:favPage(favoriteImagePaths: favoriteImagePaths)
+          ),
     );
   }
 }
@@ -171,23 +171,23 @@ class _MyHomePageState extends State<MyHomePage> {
                             'Invisible Chef',
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 33,
+                              fontSize: 30,
                               fontFamily: 'Tajawal',
-                              fontWeight: FontWeight.w500,
+                              fontWeight: FontWeight.normal,
                               height: 0,
                             ),
                           ),
                         ),
-                        Positioned(
+                        const Positioned(
                           left: 100,
-                          top: 200,
+                          top: (800 - 10) / 2,
                           child: Text(
-                            'تسجيل دخول',
+                            ' تسجيل الدخول',
                             style: TextStyle(
                               color: Color(0xFF156260),
-                              fontSize: 27,
+                              fontSize: 25,
                               fontFamily: 'Tajawal',
-                              fontWeight: FontWeight.w600,
+                              fontWeight: FontWeight.normal,
                               height: 0,
                             ),
                           ),
@@ -204,8 +204,11 @@ class _MyHomePageState extends State<MyHomePage> {
                                 hintText: "أدخل اسم المتسخدم",
                                 hintStyle: const TextStyle(fontSize: 14),
                                 border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
+                                  borderRadius: BorderRadius.circular(100.0),
                                 ),
+                                contentPadding: const EdgeInsets.symmetric(
+                                    horizontal: 50), // Adjust padding here
+
                                 suffixIcon: const Icon(
                                     Icons.person), // Add the icon here
                               ),
@@ -228,9 +231,11 @@ class _MyHomePageState extends State<MyHomePage> {
                                 hintStyle: const TextStyle(fontSize: 14),
 
                                 border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
+                                  borderRadius: BorderRadius.circular(100.0),
                                 ),
                                 // إضافة زر لتبديل رؤية كلمة المرور
+                                contentPadding:
+                                    const EdgeInsets.symmetric(horizontal: 50),
                                 suffixIcon: IconButton(
                                   icon: Icon(
                                     _showPassword
@@ -264,7 +269,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   const Color(0xFF156260), // لون الخلفية
                               shape: RoundedRectangleBorder(
                                 borderRadius:
-                                    BorderRadius.circular(10.0), // شكل الحواف
+                                    BorderRadius.circular(100.0), // شكل الحواف
                               ),
                               elevation: 8, // ارتفاع الظل
                             ),
@@ -272,9 +277,9 @@ class _MyHomePageState extends State<MyHomePage> {
                               'تــسـجــيــل',
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 24,
+                                fontSize: 20,
                                 fontFamily: 'Tajawal',
-                                fontWeight: FontWeight.w500,
+                                fontWeight: FontWeight.normal,
                                 height: 0,
                               ),
                             ),
